@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio showcasing AI-assisted apps and games">
+    <meta name="keywords" content="AI, machine learning, web development, games, apps">
+    <meta name="author" content="Your Name">
+    <meta property="og:title" content="AI-Assisted Developer Portfolio">
+    <meta property="og:description" content="Explore innovative apps and games created with AI assistance">
+    <meta property="og:image" content="https://picsum.photos/seed/og-image/1200/630.jpg">
+    <meta property="og:url" content="https://yourusername.github.io/repositoryname/">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>AI-Assisted Creations - Portfolio</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- GitHub Pages compatible fonts and icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <style>
+        /* ===== CORE VARIABLES & RESET ===== */
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --dark-bg: #0f172a;
+            --light-bg: #1e293b;
+            --card-bg: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --accent: #22d3ee;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --hover-scale: 1.05;
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.6s ease;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Light mode variables */
+        [data-theme="light"] {
+            --primary-color: #4f46e5;
+            --secondary-color: #7c3aed;
+            --dark-bg: #ffffff;
+            --light-bg: #f8fafc;
+            --card-bg: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent: #06b6d4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* ===== BASE STYLES ===== */
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            text-rendering: optimizeSpeed;
+            transition: background-color var(--transition-medium), color var(--transition-medium);
+        }
+        
+        /* ===== UTILITY CLASSES ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top var(--transition-fast);
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        /* ===== KEYBOARD SHORTCUTS MODAL ===== */
+        .shortcuts-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .shortcuts-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .shortcuts-content {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            animation: slideUp var(--transition-medium);
+        }
+        
+        .shortcuts-grid {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+        }
+        
+        .shortcut-key {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .key {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .theme-toggle {
+            background-color: var(--card-bg);
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            padding: 8px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition-medium);
+            box-shadow: var(--shadow-md);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .theme-toggle i {
+            font-size: 1.1rem;
+            transition: transform var(--transition-medium);
+        }
+        
+        .theme-toggle:hover i {
+            transform: rotate(20deg);
+        }
+        
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 10px 15px;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            transition: all var(--transition-medium);
+        }
+        
+        .stats-bar:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .stat-icon {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        
+        /* ===== SEARCH CONTAINER ===== */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 20px;
+            border-radius: 30px;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all var(--transition-medium);
+            outline: none;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+        
+        .search-clear {
+            position: absolute;
+            right: 45px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 5px;
+            display: none;
+            transition: color var(--transition-medium);
+        }
+        
+        .search-clear:hover {
+            color: var(--text-primary);
+        }
+        
+        .search-clear.show {
+            display: block;
+        }
+        
+        /* ===== ANIMATED BACKGROUND ===== */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--light-bg) 100%);
+            overflow: hidden;
+            will-change: transform;
+            transition: background var(--transition-medium);
+        }
+        
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+            will-change: transform;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* ===== HEADER STYLES ===== */
+        header {
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--transition-medium);
+            will-change: transform;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--accent);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .bio {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 25px;
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            box-shadow: var(--shadow-lg);
+            transition: background-color var(--transition-medium);
+        }
+        
+        [data-theme="light"] .bio {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .bio p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .bio p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .bio strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        /* ===== FILTER STYLES ===== */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: var(--card-bg);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 30px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            font-size: 0.9rem;
+            font-weight: 500;
+            will-change: transform, box-shadow;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        /* ===== PROJECTS GRID ===== */
+        .projects-section {
+            padding: 20px 0 60px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            contain: layout style paint;
+        }
+        
+        /* ===== PROJECT CARD ===== */
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all var(--transition-medium);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            will-change: transform;
+            backface-visibility: hidden;
+            contain: layout style paint;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .view-count {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            z-index: 1;
+        }
+        
+        .project-thumbnail {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background-color: rgba(51, 65, 85, 0.5);
+        }
+        
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+            will-change: transform;
+        }
+        
+        .project-card:hover .project-thumbnail img {
+            transform: scale(1.1);
+        }
+        
+        .project-type {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: rgba(99, 102, 241, 0.8);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .project-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tech-tag {
+            padding: 4px 8px;
+            background-color: rgba(99, 102, 241, 0.2);
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-family: 'Source Code Pro', monospace;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-medium);
+        }
+        
+        .project-link:hover {
+            color: var(--accent);
+        }
+        
+        /* ===== MODAL STYLES ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: fadeIn var(--transition-medium);
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            max-width: 900px;
+            max-height: 90vh;
+            width: 90%;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp var(--transition-medium);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .modal-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-close:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .modal-type {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .modal-description {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .modal-tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .modal-tech-item {
+            background-color: rgba(99, 102, 241, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .modal-tech-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+        
+        .modal-tech-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .modal-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .modal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all var(--transition-medium);
+        }
+        
+        .modal-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .modal-link.secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .modal-link.secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            padding: 60px 0;
+            background-color: var(--light-bg);
+            transition: background-color var(--transition-medium);
+        }
+        
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        .contact-form {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            border-radius: 10px;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all var(--transition-medium);
+            outline: none;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-error {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-error.show {
+            display: block;
+        }
+        
+        .form-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-submit:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-submit:disabled {
+            background-color: var(--text-secondary);
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .form-success {
+            background-color: var(--success);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-success.show {
+            display: flex;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            background-color: var(--light-bg);
+            transition: background-color var(--transition-medium);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(99, 102, 241, 0.2);
+            color: var(--primary-color);
+            transition: all var(--transition-medium);
+            will-change: transform, background-color;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* ===== NOTIFICATION SYSTEM ===== */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform var(--transition-medium), opacity var(--transition-medium);
+            z-index: 1000;
+            max-width: 300px;
+            will-change: transform, opacity;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: var(--error);
+            color: white;
+        }
+        
+        .notification.info {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* ===== LOADING STATES ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--transition-slow), transform var(--transition-slow);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .img-loading {
+            background-color: rgba(51, 65, 85, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .img-loading::after {
+            content: "";
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* ===== NO RESULTS MESSAGE ===== */
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            display: none;
+        }
+        
+        .no-results.show {
+            display: block;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                max-height: 95vh;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .modal-tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .theme-toggle-container {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 15px;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bio {
+                padding: 20px;
+            }
+            
+            .project-info {
+                padding: 15px;
+            }
+            
+            .modal-links {
+                flex-direction: column;
+            }
+            
+            .modal-link {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .stats-bar {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+            }
+        }
+        
+        /* ===== PERFORMANCE OPTIMIZATIONS ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-moon" id="theme-icon"></i>
+            <span id="theme-text">Dark</span>
+        </button>
+    </div>
+    
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="stats-bar">
+        <div class="stat-item">
+            <i class="fas fa-eye stat-icon"></i>
+            <div>
+                <div class="stat-value" id="total-views">0</div>
+                <div class="stat-label">Total Views</div>
+            </div>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-mouse-pointer stat-icon"></i>
+            <div>
+                <div class="stat-value" id="total-clicks">0</div>
+                <div class="stat-label">Clicks</div>
+            </div>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-clock stat-icon"></i>
+            <div>
+                <div class="stat-value" id="time-spent">0s</div>
+                <div class="stat-label">Time Spent</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-animation"></div>
+    
+    <header>
+        <div class="container">
+            <img src="https://picsum.photos/seed/profile123/150/150.jpg" 
+                 alt="Profile Picture" 
+                 class="profile-img"
+                 loading="lazy"
+                 width="150" 
+                 height="150">
+            <h1>Your Name</h1>
+            <p class="subtitle">AI-Assisted Developer & Creative</p>
+            
+            <div class="bio">
+                <p><strong>Hello! I'm a passionate developer who leverages AI tools to create innovative applications and games.</strong> My journey in tech has been transformed by the power of artificial intelligence, allowing me to bring ideas to life faster and more creatively than ever before.</p>
+                
+                <p>What excites me most about AI-assisted development is the collaborative process between human creativity and machine intelligence. Each project in this portfolio represents a unique partnership between my vision and AI capabilities, resulting in experiences that neither could create alone.</p>
+                
+                <p>I believe AI is democratizing development, enabling more people to participate in creating digital experiences. Through this portfolio, I hope to showcase what's possible when we embrace these powerful tools and push the boundaries of traditional development.</p>
+            </div>
+        </div>
+    </header>
+    
+    <main id="main-content">
+        <section class="projects-section" aria-labelledby="projects-heading">
+            <div class="container">
+                <h2 id="projects-heading" class="sr-only">My Projects</h2>
+                
+                <!-- Search Container -->
+                <div class="search-container">
+                    <input type="search" 
+                           id="project-search" 
+                           class="search-input"
+                           placeholder="Search projects... (Ctrl+K)" 
+                           aria-label="Search projects">
+                    <button class="search-clear" id="search-clear" aria-label="Clear search">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                
+                <!-- Filter Container -->
+                <div class="filter-container" role="group" aria-label="Filter projects">
+                    <button class="filter-btn active" data-filter="all" aria-pressed="true">All Projects</button>
+                    <button class="filter-btn" data-filter="app" aria-pressed="false">Apps</button>
+                    <button class="filter-btn" data-filter="game" aria-pressed="false">Games</button>
+                    <button class="filter-btn" data-filter="tool" aria-pressed="false">Tools</button>
+                </div>
+                
+                <!-- No Results Message -->
+                <div class="no-results" id="no-results">
+                    <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.5;"></i>
+                    <p>No projects found matching your search.</p>
+                </div>
+                
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Projects will be loaded dynamically from project-template.json -->
+                    <div class="loading-projects">
+                        <div class="spinner"></div>
+                        <p>Loading projects...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Have a project in mind or want to collaborate? I'd love to hear from you!</p>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name *</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                        <div class="form-error" id="name-error">Please enter your name</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email *</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                        <div class="form-error" id="email-error">Please enter a valid email address</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject *</label>
+                        <input type="text" id="subject" name="subject" class="form-input" required>
+                        <div class="form-error" id="subject-error">Please enter a subject</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message *</label>
+                        <textarea id="message" name="message" class="form-textarea" required></textarea>
+                        <div class="form-error" id="message-error">Please enter your message</div>
+                    </div>
+                    
+                    <button type="submit" class="form-submit" id="form-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                    
+                    <div class="form-success" id="form-success">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Thank you for your message! I'll get back to you soon.</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <!-- Modal content will be dynamically generated by projects.js -->
+    </div>
+    
+    <!-- Keyboard Shortcuts Modal -->
+    <div id="shortcuts-modal" class="shortcuts-modal" role="dialog" aria-modal="true" aria-labelledby="shortcuts-title">
+        <div class="shortcuts-content">
+            <h2 id="shortcuts-title" style="margin-bottom: 20px; color: var(--text-primary);">Keyboard Shortcuts</h2>
+            <button class="modal-close" id="shortcuts-close" aria-label="Close shortcuts" style="position: absolute; top: 15px; right: 15px;">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="shortcuts-grid">
+                <div class="shortcut-item">
+                    <span>Focus Search</span>
+                    <div class="shortcut-key">
+                        <span class="key">Ctrl</span>
+                        <span>+</span>
+                        <span class="key">K</span>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <span>Toggle Theme</span>
+                    <div class="shortcut-key">
+                        <span class="key">Ctrl</span>
+                        <span>+</span>
+                        <span class="key">D</span>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <span>Show Shortcuts</span>
+                    <div class="shortcut-key">
+                        <span class="key">?</span>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <span>Close Modal</span>
+                    <div class="shortcut-key">
+                        <span class="key">Esc</span>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <span>Next Project</span>
+                    <div class="shortcut-key">
+                        <span class="key">→</span>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <span>Previous Project</span>
+                    <div class="shortcut-key">
+                        <span class="key">←</span>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <span>Filter Apps</span>
+                    <div class="shortcut-key">
+                        <span class="key">1</span>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <span>Filter Games</span>
+                    <div class="shortcut-key">
+                        <span class="key">2</span>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <span>Filter Tools</span>
+                    <div class="shortcut-key">
+                        <span class="key">3</span>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <span>Filter All</span>
+                    <div class="shortcut-key">
+                        <span class="key">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p>&copy; 2023 Your Name. Built with AI assistance and hosted on GitHub Pages.</p>
+        </div>
+    </footer>
+    
+    <!-- Notification Container -->
+    <div id="notification" class="notification" role="alert" aria-live="polite"></div>
+    
+    <!-- Projects will be loaded by projects.js from project-template.json -->
+    <script src="js/projects.js"></script>
+    
+    <script>
+        // ===== STATISTICS TRACKER =====
+        const StatisticsTracker = {
+            init() {
+                this.startTime = Date.now();
+                this.stats = this.loadStats();
+                this.currentProjectIndex = 0;
+                
+                // Update stats every second
+                setInterval(() => this.updateTimeSpent(), 1000);
+                
+                // Track page views
+                this.trackPageView();
+                
+                // Track clicks
+                document.addEventListener('click', () => this.trackClick());
+                
+                // Update display
+                this.updateDisplay();
+            },
+            
+            loadStats() {
+                const saved = localStorage.getItem('portfolio-stats');
+                return saved ? JSON.parse(saved) : {
+                    totalViews: 0,
+                    totalClicks: 0,
+                    timeSpent: 0,
+                    projectViews: {}
+                };
+            },
+            
+            saveStats() {
+                localStorage.setItem('portfolio-stats', JSON.stringify(this.stats));
+            },
+            
+            trackPageView() {
+                this.stats.totalViews++;
+                this.saveStats();
+                this.updateDisplay();
+            },
+            
+            trackClick() {
+                this.stats.totalClicks++;
+                this.saveStats();
+                this.updateDisplay();
+            },
+            
+            trackProjectView(projectId) {
+                if (!this.stats.projectViews[projectId]) {
+                    this.stats.projectViews[projectId] = 0;
+                }
+                this.stats.projectViews[projectId]++;
+                this.saveStats();
+                this.updateProjectView(projectId);
+            },
+            
+            updateTimeSpent() {
+                this.stats.timeSpent++;
+                this.saveStats();
+                this.updateDisplay();
+            },
+            
+            updateDisplay() {
+                document.getElementById('total-views').textContent = this.stats.totalViews;
+                document.getElementById('total-clicks').textContent = this.stats.totalClicks;
+                
+                const seconds = this.stats.timeSpent;
+                const minutes = Math.floor(seconds / 60);
+                const hours = Math.floor(minutes / 60);
+                
+                let timeText = '';
+                if (hours > 0) {
+                    timeText = `${hours}h ${minutes % 60}m`;
+                } else if (minutes > 0) {
+                    timeText = `${minutes}m ${seconds % 60}s`;
+                } else {
+                    timeText = `${seconds}s`;
+                }
+                
+                document.getElementById('time-spent').textContent = timeText;
+            },
+            
+            updateProjectView(projectId) {
+                const card = document.querySelector(`[data-project-id="${projectId}"]`);
+                if (card) {
+                    const viewElement = card.querySelector('.view-number');
+                    if (viewElement) {
+                        viewElement.textContent = this.stats.projectViews[projectId] || 0;
+                    }
+                }
+            },
+            
+            initializeProjectViews() {
+                Object.keys(this.stats.projectViews).forEach(projectId => {
+                    this.updateProjectView(projectId);
+                });
+            }
+        };
+        
+        // ===== CONTACT FORM =====
+        const ContactForm = {
+            init() {
+                this.form = document.getElementById('contact-form');
+                this.submitBtn = document.getElementById('form-submit');
+                this.successMsg = document.getElementById('form-success');
+                
+                this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+                
+                // Real-time validation
+                this.form.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+                    input.addEventListener('blur', () => this.validateField(input));
+                    input.addEventListener('input', () => this.clearError(input));
+                });
+            },
+            
+            handleSubmit(e) {
+                e.preventDefault();
+                
+                if (!this.validateForm()) {
+                    return;
+                }
+                
+                // Show loading state
+                this.submitBtn.disabled = true;
+                this.submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    this.showSuccess();
+                    this.resetForm();
+                }, 2000);
+            },
+            
+            validateForm() {
+                let isValid = true;
+                const fields = ['name', 'email', 'subject', 'message'];
+                
+                fields.forEach(fieldName => {
+                    const field = document.getElementById(fieldName);
+                    if (!this.validateField(field)) {
+                        isValid = false;
+                    }
+                });
+                
+                return isValid;
+            },
+            
+            validateField(field) {
+                const errorElement = document.getElementById(`${field.id}-error`);
+                let isValid = true;
+                
+                if (field.value.trim() === '') {
+                    this.showError(field, errorElement, `Please enter ${field.name}`);
+                    isValid = false;
+                } else if (field.type === 'email' && !this.isValidEmail(field.value)) {
+                    this.showError(field, errorElement, 'Please enter a valid email address');
+                    isValid = false;
+                } else {
+                    this.clearError(field);
+                }
+                
+                return isValid;
+            },
+            
+            isValidEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            },
+            
+            showError(field, errorElement, message) {
+                field.style.borderColor = 'var(--error)';
+                errorElement.textContent = message;
+                errorElement.classList.add('show');
+            },
+            
+            clearError(field) {
+                const errorElement = document.getElementById(`${field.id}-error`);
+                field.style.borderColor = '';
+                errorElement.classList.remove('show');
+            },
+            
+            showSuccess() {
+                this.successMsg.classList.add('show');
+                NotificationSystem.show('Message sent successfully!', 'success');
+            },
+            
+            resetForm() {
+                this.form.reset();
+                this.submitBtn.disabled = false;
+                this.submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                
+                setTimeout(() => {
+                    this.successMsg.classList.remove('show');
+                }, 5000);
+            }
+        };
+        
+        // ===== KEYBOARD SHORTCUTS =====
+        const KeyboardShortcuts = {
+            init() {
+                this.shortcutsModal = document.getElementById('shortcuts-modal');
+                this.shortcutsClose = document.getElementById('shortcuts-close');
+                this.projectCards = Array.from(document.querySelectorAll('.project-card'));
+                this.currentProjectIndex = 0;
+                
+                // Global keyboard shortcuts
+                document.addEventListener('keydown', (e) => this.handleGlobalShortcuts(e));
+                
+                // Modal-specific shortcuts
+                this.shortcutsClose.addEventListener('click', () => this.closeShortcuts());
+                this.shortcutsModal.addEventListener('click', (e) => {
+                    if (e.target === this.shortcutsModal) {
+                        this.closeShortcuts();
+                    }
+                });
+            },
+            
+            handleGlobalShortcuts(e) {
+                // Prevent shortcuts when typing in forms
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                    return;
+                }
+                
+                // Ctrl+K or Ctrl+/ for search
+                if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === '/')) {
+                    e.preventDefault();
+                    document.getElementById('project-search').focus();
+                }
+                
+                // Ctrl+D for theme toggle
+                if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+                    e.preventDefault();
+                    document.getElementById('theme-toggle').click();
+                }
+                
+                // ? for shortcuts help
+                if (e.key === '?' && !e.ctrlKey && !e.metaKey) {
+                    e.preventDefault();
+                    this.showShortcuts();
+                }
+                
+                // Number keys for filters
+                if (e.key >= '0' && e.key <= '3') {
+                    const filterButtons = document.querySelectorAll('.filter-btn');
+                    const index = parseInt(e.key);
+                    if (index === 0) {
+                        filterButtons[0].click(); // All
+                    } else if (index <= filterButtons.length - 1) {
+                        filterButtons[index].click();
+                    }
+                }
+                
+                // Arrow keys for project navigation
+                if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    this.navigateProject(1);
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    this.navigateProject(-1);
+                }
+                
+                // Escape to close modals
+                if (e.key === 'Escape') {
+                    this.closeAllModals();
+                }
+            },
+            
+            showShortcuts() {
+                this.shortcutsModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            },
+            
+            closeShortcuts() {
+                this.shortcutsModal.classList.remove('show');
+                document.body.style.overflow = '';
+            },
+            
+            navigateProject(direction) {
+                const visibleCards = this.projectCards.filter(card => 
+                    card.style.display !== 'none'
+                );
+                
+                if (visibleCards.length === 0) return;
+                
+                this.currentProjectIndex = (this.currentProjectIndex + direction + visibleCards.length) % visibleCards.length;
+                const targetCard = visibleCards[this.currentProjectIndex];
+                
+                // Scroll to card
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Highlight card temporarily
+                targetCard.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    targetCard.style.transform = '';
+                }, 300);
+            },
+            
+            closeAllModals() {
+                this.closeShortcuts();
+                const projectModal = document.getElementById('project-modal');
+                if (projectModal.classList.contains('show')) {
+                    projectModal.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            }
+        };
+        
+        // ===== NOTIFICATION SYSTEM =====
+        const NotificationSystem = {
+            show(message, type = 'info') {
+                const notification = document.getElementById('notification');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <i class="fas ${this.getIcon(type)}"></i>
+                    <span>${message}</span>
+                `;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000);
+            },
+            
+            getIcon(type) {
+                const icons = {
+                    success: 'fa-check-circle',
+                    error: 'fa-exclamation-circle',
+                    info: 'fa-info-circle'
+                };
+                return icons[type] || icons.info;
+            }
+        };
+        
+        // ===== THEME TOGGLE =====
+        const ThemeManager = {
+            init() {
+                this.themeToggle = document.getElementById('theme-toggle');
+                this.themeIcon = document.getElementById('theme-icon');
+                this.themeText = document.getElementById('theme-text');
+                
+                const savedTheme = localStorage.getItem('theme') || 'dark';
+                this.setTheme(savedTheme);
+                
+                this.themeToggle.addEventListener('click', () => this.toggleTheme());
+            },
+            
+            toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                this.setTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+                NotificationSystem.show(`Switched to ${newTheme} mode`, 'info');
+            },
+            
+            setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                this.themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+                this.themeText.textContent = theme === 'light' ? 'Light' : 'Dark';
+            }
+        };
+        
+        // ===== SEARCH FUNCTIONALITY =====
+        const SearchSystem = {
+            init() {
+                this.searchInput = document.getElementById('project-search');
+                this.searchClear = document.getElementById('search-clear');
+                this.noResults = document.getElementById('no-results');
+                
+                this.searchInput.addEventListener('input', debounce(() => this.handleSearch(), 300));
+                this.searchClear.addEventListener('click', () => this.clearSearch());
+                
+                this.searchInput.addEventListener('input', () => {
+                    this.searchClear.classList.toggle('show', this.searchInput.value.length > 0);
+                });
+                
+                // Re-initialize project cards when projects are loaded
+                document.addEventListener('projectsLoaded', () => {
+                    this.projectCards = document.querySelectorAll('.project-card');
+                });
+            },
+            
+            handleSearch() {
+                if (!this.projectCards) {
+                    this.projectCards = document.querySelectorAll('.project-card');
+                }
+                
+                const searchTerm = this.searchInput.value.toLowerCase().trim();
+                let visibleCount = 0;
+                
+                this.projectCards.forEach(card => {
+                    const title = card.querySelector('.project-title')?.textContent.toLowerCase() || '';
+                    const description = card.querySelector('.project-description')?.textContent.toLowerCase() || '';
+                    const tech = Array.from(card.querySelectorAll('.tech-tag') || [])
+                        .map(tag => tag.textContent.toLowerCase())
+                        .join(' ');
+                    
+                    const matches = title.includes(searchTerm) || 
+                                   description.includes(searchTerm) || 
+                                   tech.includes(searchTerm);
+                    
+                    if (matches) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                this.noResults.classList.toggle('show', visibleCount === 0 && searchTerm.length > 0);
+            },
+            
+            clearSearch() {
+                this.searchInput.value = '';
+                this.searchClear.classList.remove('show');
+                this.noResults.classList.remove('show');
+                
+                if (!this.projectCards) {
+                    this.projectCards = document.querySelectorAll('.project-card');
+                }
+                
+                this.projectCards.forEach(card => {
+                    card.style.display = 'flex';
+                });
+            }
+        };
+        
+        // ===== MODAL SYSTEM =====
+        const ModalSystem = {
+            init() {
+                // Modal functionality is now handled by projects.js
+                // This is kept for compatibility but doesn't do anything
+                console.log('ModalSystem initialized - functionality moved to projects.js');
+            }
+        };
+        
+        // ===== FILTER SYSTEM =====
+        const FilterSystem = {
+            init() {
+                this.filterButtons = document.querySelectorAll('.filter-btn');
+                
+                this.filterButtons.forEach(button => {
+                    button.addEventListener('click', () => this.handleFilterClick(button));
+                });
+                
+                // Re-initialize project cards when projects are loaded
+                document.addEventListener('projectsLoaded', () => {
+                    this.projectCards = document.querySelectorAll('.project-card');
+                });
+            },
+            
+            handleFilterClick(button) {
+                try {
+                    this.filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-pressed', 'false');
+                    });
+                    button.classList.add('active');
+                    button.setAttribute('aria-pressed', 'true');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    this.filterProjects(filter);
+                } catch (error) {
+                    NotificationSystem.show('Failed to filter projects. Please try again.', 'error');
+                    console.error('Filter error:', error);
+                }
+            },
+            
+            filterProjects(filter) {
+                if (!this.projectCards) {
+                    this.projectCards = document.querySelectorAll('.project-card');
+                }
+                
+                const visibleCards = [];
+                
+                this.projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                        visibleCards.push(card);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                visibleCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 50);
+                });
+            }
+        };
+        
+        // ===== PERFORMANCE MONITORING =====
+        const PerformanceMonitor = {
+            init() {
+                if ('performance' in window) {
+                    window.addEventListener('load', () => {
+                        setTimeout(() => {
+                            const perfData = performance.getEntriesByType('navigation')[0];
+                            const loadTime = perfData.loadEventEnd - perfData.fetchStart;
+                            console.log('Page load time:', loadTime + 'ms');
+                            
+                            if ('getEntriesByType' in performance) {
+                                const paintEntries = performance.getEntriesByType('paint');
+                                paintEntries.forEach(entry => {
+                                    console.log(`${entry.name}: ${entry.startTime}ms`);
+                                });
+                            }
+                        }, 0);
+                    });
+                }
+            }
+        };
+        
+        // ===== IMAGE HANDLING =====
+        const ImageHandler = {
+            init() {
+                document.querySelectorAll('img').forEach(img => {
+                    img.addEventListener('error', this.handleImageError);
+                    
+                    if (!img.complete) {
+                        this.addLoadingState(img);
+                        img.addEventListener('load', () => this.removeLoadingState(img));
+                    }
+                });
+                
+                this.preloadCriticalImages();
+            },
+            
+            handleImageError(e) {
+                const img = e.target;
+                img.src = 'https://picsum.photos/seed/fallback/400/300.jpg';
+                img.alt = 'Image not available';
+                img.onerror = null;
+            },
+            
+            addLoadingState(img) {
+                const parent = img.parentElement;
+                if (parent && parent.classList.contains('project-thumbnail')) {
+                    parent.classList.add('img-loading');
+                }
+            },
+            
+            removeLoadingState(img) {
+                const parent = img.parentElement;
+                if (parent && parent.classList.contains('project-thumbnail')) {
+                    parent.classList.remove('img-loading');
+                }
+            },
+            
+            preloadCriticalImages() {
+                const profileImg = document.querySelector('.profile-img');
+                if (profileImg && !profileImg.complete) {
+                    const tempImg = new Image();
+                    tempImg.src = profileImg.src;
+                }
+                
+                const projectImages = document.querySelectorAll('.project-thumbnail img');
+                for (let i = 0; i < Math.min(3, projectImages.length); i++) {
+                    const img = projectImages[i];
+                    if (!img.complete) {
+                        const tempImg = new Image();
+                        tempImg.src = img.src;
+                    }
+                }
+            }
+        };
+        
+        // ===== SCROLL ANIMATIONS =====
+        const ScrollAnimations = {
+            init() {
+                if (!('IntersectionObserver' in window)) {
+                    this.fallbackAnimation();
+                    return;
+                }
+                
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            this.observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+                
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    this.observer.observe(el);
+                });
+            },
+            
+            fallbackAnimation() {
+                const elements = document.querySelectorAll('.fade-in');
+                const checkScroll = debounce(() => {
+                    elements.forEach(el => {
+                        const rect = el.getBoundingClientRect();
+                        if (rect.top < window.innerHeight * 0.8) {
+                            el.classList.add('visible');
+                        }
+                    });
+                }, 100);
+                
+                window.addEventListener('scroll', checkScroll);
+                checkScroll();
+            }
+        };
+        
+        // ===== UTILITY FUNCTIONS =====
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            StatisticsTracker.init();
+            ContactForm.init();
+            KeyboardShortcuts.init();
+            ThemeManager.init();
+            SearchSystem.init();
+            ModalSystem.init();
+            FilterSystem.init();
+            PerformanceMonitor.init();
+            ImageHandler.init();
+            ScrollAnimations.init();
+            
+            // Initialize project views
+            StatisticsTracker.initializeProjectViews();
+            
+            console.log('Portfolio initialized successfully');
+        });
+        
+        </script>
+</body>
+</html>

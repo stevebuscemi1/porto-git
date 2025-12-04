@@ -1,0 +1,112 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Mine Quest",
+      "type": "2D Exploration Game",
+      "image": "https://picsum.photos/seed/mine_quest/900/500.jpg",
+      "description": "A 2D grid-based exploration and mining game with procedurally generated underground worlds. Players mine resources, battle enemies, and create their own goals in a sandbox environment.\n\nKey Features:\n- Procedural World Generation\n- Resource Mining and Crafting\n- Turn-Based Combat\n- Equipment and Progression System\n- Multiple Game Modes",
+      "technologies": ["HTML5", "CSS3", "JavaScript (ES6)", "Canvas API", "Web Audio API"],
+      "features": [
+        "Procedurally generated underground worlds",
+        "Resource mining and crafting system",
+        "Turn-based combat with equipment stats",
+        "Multiple game modes (Standard, Custom, Gauntlet)",
+        "Cross-platform support (desktop, mobile, Steam Deck)",
+        "Save system with cloud integration"
+      ],
+      "githubUrl": "https://github.com/stevebuscemi1/mine_quest",
+      "liveDemoUrl": "#",
+      "category": "game"
+    },
+    {
+      "id": 2,
+      "title": "Game 1",
+      "type": "Game Project",
+      "image": "https://picsum.photos/seed/game1/900/500.jpg",
+      "description": "A game development project. (Further details to be added)",
+      "technologies": ["Game Development", "Programming"],
+      "features": [
+        "Game mechanics implementation",
+        "Interactive gameplay elements",
+        "User interface design"
+      ],
+      "githubUrl": "https://github.com/stevebuscemi1/game1",
+      "liveDemoUrl": "#",
+      "category": "game"
+    },
+    {
+      "id": 3,
+      "title": "Ancient Tablet Research Interface (ATRI)",
+      "type": "Research Web Application",
+      "image": "https://picsum.photos/seed/atari/900/500.jpg",
+      "description": "A cutting-edge web application for the analysis and interpretation of ancient artifacts with potential quantum anomalies. Combines modern web technologies with advanced visualization techniques for artifact examination.\n\nThe interface provides powerful tools for researchers to analyze and interpret ancient artifacts with unprecedented precision and depth.",
+      "technologies": ["JavaScript", "Three.js", "D3.js", "Chart.js", "TailwindCSS"],
+      "features": [
+        "3D Artifact Viewer with interactive model manipulation",
+        "Spectral Analysis Module for quantum frequency visualization",
+        "Material Composition Scanner with elemental mapping",
+        "Symbol Recognition System for ancient script analysis",
+        "Responsive design with modern UI/UX principles"
+      ],
+      "githubUrl": "https://github.com/stevebuscemi1/ancient-tablet-research-interface",
+      "liveDemoUrl": "#",
+      "category": "app"
+    },
+    {
+      "id": 4,
+      "title": "Petri Dish Simulation",
+      "type": "Scientific Simulation",
+      "image": "https://picsum.photos/seed/petri_dish/900/500.jpg",
+      "description": "An advanced, academic-grade evolutionary simulation exploring emergent behavior, natural selection, and ecosystem dynamics in a controlled grid environment.\n\nThis scientific simulation allows for the observation of evolutionary patterns, genetic inheritance, and complex behaviors in a virtual ecosystem.",
+      "technologies": ["JavaScript", "HTML5 Canvas", "Data Visualization"],
+      "features": [
+        "Genetic inheritance and mutation system",
+        "State-driven AI behaviors (Forage, Hunt, Mate)",
+        "Real-time data visualization and analysis",
+        "Interactive gene editing interface",
+        "Dynamic environment with food clusters"
+      ],
+      "githubUrl": "https://github.com/stevebuscemi1/petri_sim",
+      "liveDemoUrl": "#",
+      "category": "app"
+    },
+    {
+      "id": 5,
+      "title": "Lizard Game",
+      "type": "HTML5 Mobile Game",
+      "image": "https://picsum.photos/seed/lizard_game/900/500.jpg",
+      "description": "A delightful, mobile-friendly HTML5 game where you control a customizable lizard to collect leaves, avoid obstacles, and complete challenging levels!\n\nFeatures progressive difficulty, boss battles, and an achievement system to keep players engaged.",
+      "technologies": ["HTML5", "JavaScript", "CSS3", "Mobile Web"],
+      "features": [
+        "Customizable lizard character with various skins",
+        "Multiple levels with increasing difficulty",
+        "Leaf collection mechanics with different types",
+        "Challenging boss battles",
+        "Power-ups and special abilities",
+        "Mobile-optimized touch controls"
+      ],
+      "githubUrl": "https://github.com/stevebuscemi1/lizard_game",
+      "liveDemoUrl": "#",
+      "category": "game"
+    },
+    {
+      "id": 6,
+      "title": "Portfolio Website",
+      "type": "Personal Portfolio",
+      "image": "https://picsum.photos/seed/portfolio/900/500.jpg",
+      "description": "A responsive portfolio website showcasing projects, skills, and experience. Built with modern web technologies and featuring a clean, professional design.\n\nThis portfolio includes interactive project showcases, a contact form, and responsive design for all devices.",
+      "technologies": ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
+      "features": [
+        "Responsive layout for all devices",
+        "Interactive project showcase",
+        "Contact form with validation",
+        "Dark/light mode toggle",
+        "Performance optimized"
+      ],
+      "githubUrl": "https://github.com/stevebuscemi1/porto-git",
+      "liveDemoUrl": "#",
+      "category": "app"
+    }
+  ]
+}
