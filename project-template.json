@@ -87,7 +87,7 @@
         "Mobile-optimized touch controls"
       ],
       "githubUrl": "https://github.com/stevebuscemi1/lizard_game",
-      "liveDemoUrl": "#",
+      "liveDemoUrl": "https://stevebuscemi1.github.io/lizard_game/lizard_game.html",
       "category": "game"
     },
     {
@@ -105,7 +105,7 @@
         "Performance optimized"
       ],
       "githubUrl": "https://github.com/stevebuscemi1/porto-git",
-      "liveDemoUrl": "#",
+      "liveDemoUrl": "https://stevebuscemi1.github.io/porto-git/porto-git.html",
       "category": "app"
     }
   ]

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio showcasing AI-assisted apps and games">
     <meta name="keywords" content="AI, machine learning, web development, games, apps">
-    <meta name="author" content="Your Name">
+    <meta name="author" content="stevebuscemi1">
     <meta property="og:title" content="AI-Assisted Developer Portfolio">
     <meta property="og:description" content="Explore innovative apps and games created with AI assistance">
     <meta property="og:image" content="https://picsum.photos/seed/og-image/1200/630.jpg">
-    <meta property="og:url" content="https://yourusername.github.io/repositoryname/">
+    <meta property="og:url" content="https://stevebuscemi1.github.io/porto-git/porto-git.html">
     <meta name="twitter:card" content="summary_large_image">
     <title>AI-Assisted Creations - Portfolio</title>
     
@@ -18,7 +18,7 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
     
     <!-- GitHub Pages compatible fonts and icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
     <style>
@@ -1110,13 +1110,13 @@
     
     <header>
         <div class="container">
-            <img src="https://picsum.photos/seed/profile123/150/150.jpg" 
+            <img src="assets/monkey.PNG" 
                  alt="Profile Picture" 
                  class="profile-img"
                  loading="lazy"
                  width="150" 
                  height="150">
-            <h1>Your Name</h1>
+            <h1>stevebuscemi1</h1>
             <p class="subtitle">AI-Assisted Developer & Creative</p>
             
             <div class="bio">
@@ -1179,7 +1179,7 @@
                 <h2 class="section-title">Get In Touch</h2>
                 <p class="section-subtitle">Have a project in mind or want to collaborate? I'd love to hear from you!</p>
                 
-                <form class="contact-form" id="contact-form">
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/mjknorkz" method="POST">
                     <div class="form-group">
                         <label for="name" class="form-label">Name *</label>
                         <input type="text" id="name" name="name" class="form-input" required>
@@ -1316,12 +1316,35 @@
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
-            <p>&copy; 2023 Your Name. Built with AI assistance and hosted on GitHub Pages.</p>
+            <p>&copy; 2025 stevebuscemi1 Built with AI assistance and hosted on GitHub Pages.</p>
         </div>
     </footer>
     
     <!-- Notification Container -->
     <div id="notification" class="notification" role="alert" aria-live="polite"></div>
+    
+    <!-- Console Logo Script -->
+    <script>
+    // Console Logo
+    console.log('%c Made with AI by stevevbuscemi1 ! ', 'color: #00d4ff; font-size: 20px; font-weight: bold; text-shadow: 0 0 10px #00d4ff;');
+    const logoLines = [
+        '%c███╗   ███╗ █████╗ ██████╗ ███████╗    ██╗    ██╗██╗████████╗██╗  ██╗    █████╗    ██╗   ',
+        '%c████╗ ████║██╔══██╗██╔══██╗██╔════╝    ██║    ██║██║╚══██╔══╝██║  ██║   ██╔══██╗   ╚═╝   ',
+        '%c██╔████╔██║███████║██║  ██║█████╗      ██║ █╗ ██║██║   ██║   ███████║   ███████║   ██║   ',
+        '%c██║╚██╔╝██║██╔══██║██║  ██║██╔══╝      ██║███╗██║██║   ██║   ██╔══██║   ██╔══██║   ██║   ',
+        '%c██║ ╚═╝ ██║██║  ██║██████╔╝███████╗    ╚███╔███╔╝██║   ██║   ██║  ██║   ██║  ██║██╗██╗██╗',
+        '%c╚═╝     ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝     ╚══╝╚══╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝╚═╝'
+    ];
+    const logoColors = [
+        'color: #ff6b6b; font-family: monospace; font-size: 12px;',
+        'color: #4ecdc4; font-family: monospace; font-size: 12px;',
+        'color: #45b7d1; font-family: monospace; font-size: 12px;',
+        'color: #f9ca24; font-family: monospace; font-size: 12px;',
+        'color: #ff9ff3; font-family: monospace; font-size: 12px;',
+        'color: #6c5ce7; font-family: monospace; font-size: 12px;'
+    ];
+    logoLines.forEach((line, index) => console.log(line, logoColors[index]));
+    </script>
     
     <!-- Projects will be loaded by projects.js from project-template.json -->
     <script src="js/projects.js"></script>
@@ -1441,7 +1464,7 @@
                 });
             },
             
-            handleSubmit(e) {
+            async handleSubmit(e) {
                 e.preventDefault();
                 
                 if (!this.validateForm()) {
@@ -1452,11 +1475,28 @@
                 this.submitBtn.disabled = true;
                 this.submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 
-                // Simulate form submission
-                setTimeout(() => {
-                    this.showSuccess();
-                    this.resetForm();
-                }, 2000);
+                try {
+                    const formData = new FormData(this.form);
+                    const response = await fetch(this.form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        this.showSuccess();
+                        this.resetForm();
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    NotificationSystem.show('Failed to send message. Please try again later.', 'error');
+                    this.submitBtn.disabled = false;
+                    this.submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                }
             },
             
             validateForm() {
@@ -1508,7 +1548,7 @@
             
             showSuccess() {
                 this.successMsg.classList.add('show');
-                NotificationSystem.show('Message sent successfully!', 'success');
+                NotificationSystem.show('Message sent successfully! I\'ll get back to you soon!', 'success');
             },
             
             resetForm() {
