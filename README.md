@@ -11,7 +11,7 @@ A modern, responsive portfolio website showcasing AI-assisted projects, built wi
 - **Keyboard Navigation**: Full keyboard accessibility and shortcuts
 - **Progressive Web App**: Works offline with service worker
 - **Performance Optimized**: Fast loading with lazy loading images and efficient animations
-- **Contact Form**: Easy way for visitors to get in touch
+- **Contact Form**: Real email functionality with Formspree integration
 
 ## 🛠️ Tech Stack
 
@@ -20,6 +20,7 @@ A modern, responsive portfolio website showcasing AI-assisted projects, built wi
 - **Animations**: CSS Transitions & Keyframes
 - **Performance**: Lazy loading, requestAnimationFrame, Intersection Observer
 - **PWA**: Service Worker for offline functionality
+- **Forms**: Formspree for contact form submissions
 - **Hosting**: GitHub Pages compatible
 
 ## 🏗️ Project Structure
@@ -78,6 +79,13 @@ portfolio/
 - Image optimization and lazy loading
 - Efficient DOM updates with requestAnimationFrame
 - Service Worker for offline support
+
+### Contact Form
+- Real email submissions via Formspree
+- Client-side validation with error handling
+- Success feedback with redirect handling
+- No backend required - works with static sites
+- Configurable email notifications
 
 ## 🚀 Getting Started
 
@@ -147,6 +155,13 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - Contact form with validation
 - Performance optimizations
 - PWA support
+
+### [1.1.0] - 2025-12-05
+- Added real email functionality via Formspree integration
+- Updated contact form to send actual emails
+- Added success message and redirect handling
+- Updated social links with actual URLs
+- Enhanced console branding with personalized logo
 
 ## 📧 Contact
 
